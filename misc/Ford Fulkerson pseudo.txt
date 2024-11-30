@@ -1,0 +1,89 @@
+Algoritmo Ford Fulkerson
+-Usa una red residual que comienza igual a la del grafo original
+-Ubica la fuente y sumidero(El grafo solo puede tener una fuente o sumidero)
+-Busca los caminos de aumento en la red residual
+-Modifica en la red residual el camino restandole la capacidad minima
+-suma la capacidad minima a el flujo maximo
+-repite el proceso hasta no hayar mas caminos
+-entrega el flujo maximo 
+
+
+Pila* Camino(MatrizAdy *G, num ini, num fin){
+	//BFS modificado para entregar un camino de ini a fin
+	num largo=G->n
+	num u,aux, aux2
+	num flujomax=-1		//flujo maximo del camino
+	num V[largo]		//Visitado
+	num A[largo]		//Antecesor
+	For i=0 to largo-1
+		V[i]=-1
+		A[i]=Null
+	V[ini]=0
+	Cola *Q=crearCola()
+	Pila *C=crearPila()		//Camino
+	enqueue(Q, ini)
+	While not esColaVacia(Q)	//recorre el grafo
+		u= dequeue(Q)
+		if u==fin		//si se encuentra un camino de la fuente al sumidero la guarda en una pila y en el tope pone el flujomax de ese camino
+			aux=fin
+			aux2=A[aux]
+			push(P, aux)
+			while A[aux2]!=Null
+				if flujomax=-1 or flujomax>G->M[aux2][aux] //Guarda la capacidad minima de entre todas las aristas del camino
+					flujomax=M[aux2][aux]
+				push(P, aux2)
+				aux=A[aux]
+			push(P, flujomax)	//pone el flujo maximo del camino en la pila
+			return P
+		For i=0 to largo-1
+			if V[i]=-1 and G->M[u][i] != 0
+				V[i]=0
+				A[i]=u
+				enqueue(Q, i)
+		V[u]=1
+	return P		//si no encuentra un camino devuelve una pila vacia
+}
+
+num flujoMax(MatrizAdy *G){
+	MatrizAdy R=G		//Grafo residual copia del grafo original
+	num Sumidero=0
+	num Fuente=0
+	num aux, aux2
+	num largo=G->n
+	num flujoMax=0
+	num flujoactual
+	num i=0
+	num cont=0
+	num j=0
+	num cont2=0
+	while i<largo	//recorre el grafo para encontrar el sumidero y la fuente
+		cont=0
+		cont2=0
+		j=0
+		while j<largo
+			if M[i][j]==0
+				cont+=1
+			if M[j][i]==0
+				cont2+=1
+			j+=1
+		if cont==largo
+			Fuente=i
+		if cont2=largo
+			Sumidero=j
+		if Fuente!=0 and Sumidero !=0
+			i=largo
+			j=largo
+		i+=1
+	Pila *P= Camino(G)
+	P=Camino(R, Fuente, Sumidero)
+	while not esPilaVacia(P)	//Busca los caminos de aumento posibles
+		flujoactual=pop(P)
+		aux=pop(P)
+		while aux!=fuente	//Recorre el camino de la Pila P
+			aux2=pop(P)
+			R[aux][aux2]-=flujoactual	//Modifica la red residual, restando la capacidad minima del camino actual
+			aux=aux2
+		flujoMax+=flujoactual
+		P=Camino(R, Fuente, Sumidero)
+	return flujoMax
+}

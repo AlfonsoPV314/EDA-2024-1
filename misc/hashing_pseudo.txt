@@ -1,0 +1,34 @@
+Se posee una tabla de Hashing abierto T1, con encadenamiento y una función hash H1. Se pide construir 
+un algoritmo en pseudocódigo que reciba un dato d, y si ese dato no está en T1, agregarlo a la tabla de 
+hashing cerrado T2, con prueba lineal para resolver las colisiones y una función hash H2. En caso de 
+necesitar, las funciones de los TDA Lista, Pila, Cola y AVL están disponibles.
+
+Nodo:
+	int dato
+	Nodo* sig
+	
+Lista:
+	Nodo* head
+	
+hashing(int key, int i, int* T2):
+	.
+	.
+	.
+	.
+
+agregarHashing(int* T1, int d):
+	int check = 0
+	for i=0 to n
+		check = buscarLista(T1[i], d)
+	end for
+	if check == 0:
+		return
+	else:
+		int i=0
+		int T2[m]
+		do: 
+			i=i+1 
+		while T2[(d.key*3+i)%m] != NULL	//se puede reemplazar por funcion hashing
+		T[(d.key*3+i)%m] = d.key
+	end if
+	return
