@@ -1,3 +1,5 @@
+========== AUTORA: Sofia Rojas ==========
+
 Algoritmo Ford Fulkerson
 -Usa una red residual que comienza igual a la del grafo original
 -Ubica la fuente y sumidero(El grafo solo puede tener una fuente o sumidero)
