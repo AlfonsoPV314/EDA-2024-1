@@ -7,7 +7,7 @@ Algoritmo Ford Fulkerson
 -Modifica en la red residual el camino restandole la capacidad minima
 -suma la capacidad minima a el flujo maximo
 -repite el proceso hasta no hayar mas caminos
--entrega el flujo maximo 
+-entrega el flujo maximo
 
 
 Pila* Camino(MatrizAdy *G, num ini, num fin){
